@@ -147,9 +147,7 @@ $login = $_SESSION['login'];
                         <button type="submit" name="submit_payments" class="btn btn-primary">Kup teraz</button>
                     </form>
                 </div>
-            </div>
-            
-            <div class="row" id="text">
+
             <div class="col-sm" id="payments_1">
                 <h2>Historia płatności</h2>
                     <div class="table-responsive">  

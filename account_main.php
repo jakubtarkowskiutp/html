@@ -181,8 +181,9 @@ mysqli_close($conn2);
 
                 <div class="col-sm" id="info">
                     <p>Zapisane zajęcia</p>
-                    <h2>
+                    <p>
 <?php 
+                        $curr = date('Y-m-d');
        $conn= mysqli_connect('www.jtarkowski.pl','33472118_inz','Baza$danych','33472118_inz');
                     $query = "SELECT DISTINCT DAY, TIME, TYPE FROM activities WHERE login = '$login' order by date_in desc";             
                     $result = mysqli_query($conn, $query);
@@ -190,38 +191,42 @@ mysqli_close($conn2);
 if (mysqli_num_rows($result) > 0) {
   // output data of each row
   while($row = mysqli_fetch_assoc($result)) {
-    echo "" . $row["DAY"]. " " . $row["TIME"]. "<br>" . $row["TYPE"]. " <br>";
+    echo "" . $row["DAY"]. " " . $row["TIME"]. " " . $row["TYPE"]. " <br>";
   }
 } else {
   echo "Brak zapisów";
 }
 
 mysqli_close($conn);?>
-                        </h2>
+                        </p>
                     
                 </div>
                 
     
     <div class="col-sm" id="info">
         <p>Karnety</p>
-        <h2>
+        <div class="col"><p1>Indywidualny</p1>
 <?php 
+            $curr = date('Y-m-d');
 $conn= mysqli_connect('www.jtarkowski.pl','33472118_inz','Baza$danych','33472118_inz');
-$query = "SELECT DISTINCT TYPE FROM activities WHERE login = '$login' order by date_in desc";             
+$query = "SELECT * FROM payments WHERE login = '$login' AND TYPE='Zajecia indywidualne";             
 $result = mysqli_query($conn, $query);
 
 if (mysqli_num_rows($result) > 0) {
-  // output data of each row
+echo "<br>Start ".$row["START"]." ".$curr." koniec ".$row["STOP"]."<br>";
   while($row = mysqli_fetch_assoc($result)) {
-    echo "" . $row["TYPE"]. "<br>";
+    echo "<br>Start ".$row["START"]." ".$curr." koniec ".$row["STOP"]."<br>";
   }
 } else {
   echo "Brak zapisów";
 }
 
 mysqli_close($conn);?>
-    
-    </h2>
+
+        </div>
+        <div class="col">
+        
+        </div>
     </div>
                 <div class="col-sm" id="info"></div>
                 

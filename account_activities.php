@@ -108,7 +108,7 @@ $login = $_SESSION['login'];
    
             <div class="col-sm" id="calendar_day">
                 <form method="post" action="">
-                  <input type="text" id="day" name="day" value="Poniedzialek" readonly><br>
+                  <input type="text" id="day" name="day" value="Poniedziałek" readonly><br>
                 <?php $conn_pon = mysqli_connect('www.jtarkowski.pl','33472118_inz','Baza$danych','33472118_inz');
                 $query_pon = "SELECT * FROM activities WHERE login = 'ADMIN' AND DAY = 'Poniedzialek' AND TYPE = 'Zajecia grupowe' order by time";
                 $result_pon = mysqli_query($conn_pon, $query_pon);?>
@@ -116,9 +116,10 @@ $login = $_SESSION['login'];
                          while($row = mysqli_fetch_array($result_pon))
                          {
                               echo '
-                              <input type="submit" class="btn btn-primary" name="submitgroup" value='.$row["TIME"].' /><br>
-                              
-                       
+                              <input type="hidden" id="day" name="trainer" value='.$row["TRAINER"].' readonly><br>
+                              <input type="submit" class="btn btn-primary" name="submitgroup" value='.$row["TIME"].' title="Trener: '.$row["TRAINER"].' &#013; Poziom: '.$row["LEVEL"].'"/><br>
+                               <input type="hidden" id="day" name="level" value='.$row["LEVEL"].' readonly><br>
+                      
                           ';                             
                          }mysqli_close($conn_pon);
                          ?>    
@@ -135,9 +136,9 @@ $login = $_SESSION['login'];
                          while($row = mysqli_fetch_array($result_pon))
                          {
                               echo '
-                              <input type="submit" class="btn btn-primary" name="submitgroup" value='.$row["TIME"].' /><br>
-                              
-                       
+                             <input type="hidden" id="day" name="trainer" value='.$row["TRAINER"].' readonly><br>
+                              <input type="submit" class="btn btn-primary" name="submitgroup" value='.$row["TIME"].' title="Trener: '.$row["TRAINER"].' &#013; Poziom: '.$row["LEVEL"].'"/><br>
+                               <input type="hidden" id="day" name="level" value='.$row["LEVEL"].' readonly><br>
                           ';                             
                          }mysqli_close($conn_pon);
                          ?>    
@@ -146,7 +147,7 @@ $login = $_SESSION['login'];
     </div>
     <div class="col-sm" id="calendar_day">
                 <form method="post" action="">
-                  <input type="text" id="day" name="day" value="Sroda" readonly><br>
+                  <input type="text" id="day" name="day" value="Środa" readonly><br>
                 <?php $conn_pon = mysqli_connect('www.jtarkowski.pl','33472118_inz','Baza$danych','33472118_inz');
                 $query_pon = "SELECT * FROM activities WHERE login = 'ADMIN' AND DAY = 'Sroda' AND TYPE = 'Zajecia grupowe' order by time";
                 $result_pon = mysqli_query($conn_pon, $query_pon);?>
@@ -154,9 +155,9 @@ $login = $_SESSION['login'];
                          while($row = mysqli_fetch_array($result_pon))
                          {
                               echo '
-                              <input type="submit" class="btn btn-primary" name="submitgroup" value='.$row["TIME"].' /><br>
-                              
-                       
+                           <input type="hidden" id="day" name="trainer" value='.$row["TRAINER"].' readonly><br>
+                              <input type="submit" class="btn btn-primary" name="submitgroup" value='.$row["TIME"].' title="Trener: '.$row["TRAINER"].' &#013; Poziom: '.$row["LEVEL"].'"/><br>
+                               <input type="hidden" id="day" name="level" value='.$row["LEVEL"].' readonly><br>
                           ';                             
                          }mysqli_close($conn_pon);
                          ?>    
@@ -173,9 +174,9 @@ $login = $_SESSION['login'];
                          while($row = mysqli_fetch_array($result_pon))
                          {
                               echo '
-                              <input type="submit" class="btn btn-primary" name="submitgroup" value='.$row["TIME"].' /><br>
-                              
-                       
+                           <input type="hidden" id="day" name="trainer" value='.$row["TRAINER"].' readonly><br>
+                              <input type="submit" class="btn btn-primary" name="submitgroup" value='.$row["TIME"].' title="Trener: '.$row["TRAINER"].' &#013; Poziom: '.$row["LEVEL"].'"/><br>
+                               <input type="hidden" id="day" name="level" value='.$row["LEVEL"].' readonly><br>
                           ';                             
                          }mysqli_close($conn_pon);
                          ?>    
@@ -184,7 +185,7 @@ $login = $_SESSION['login'];
     </div>
         <div class="col-sm" id="calendar_day">
                 <form method="post" action="">
-                  <input type="text" id="day" name="day" value="Piatek" readonly><br>
+                  <input type="text" id="day" name="day" value="Piątek" readonly><br>
                 <?php $conn_pon = mysqli_connect('www.jtarkowski.pl','33472118_inz','Baza$danych','33472118_inz');
                 $query_pon = "SELECT * FROM activities WHERE login = 'ADMIN' AND DAY = 'Piatek' AND TYPE = 'Zajecia grupowe' order by time";
                 $result_pon = mysqli_query($conn_pon, $query_pon);?>
@@ -192,10 +193,9 @@ $login = $_SESSION['login'];
                          while($row = mysqli_fetch_array($result_pon))
                          {
                               echo '
-                              <input type="submit" class="btn btn-primary" name="submitgroup" value='.$row["TIME"].' /><br>
-                              
-                       
-                          ';                             
+                            <input type="hidden" id="day" name="trainer" value='.$row["TRAINER"].' readonly><br>
+                              <input type="submit" class="btn btn-primary" name="submitgroup" value='.$row["TIME"].' title="Trener: '.$row["TRAINER"].' &#013; Poziom: '.$row["LEVEL"].'"/><br>
+                               <input type="hidden" id="day" name="level" value='.$row["LEVEL"].' readonly><br>  ';                             
                          }mysqli_close($conn_pon);
                          ?>    
                     </form>
@@ -218,7 +218,7 @@ $login = $_SESSION['login'];
    
             <div class="col-sm" id="calendar_day">
                 <form method="post" action="">
-                  <input type="text" id="day" name="day" value="Poniedzialek" readonly><br>
+                  <input type="text" id="day" name="day" value="Poniedziałek" readonly><br>
                 <?php $conn_pon = mysqli_connect('www.jtarkowski.pl','33472118_inz','Baza$danych','33472118_inz');
                 $query_pon = "SELECT * FROM activities WHERE login = 'ADMIN' AND DAY = 'Poniedzialek' AND TYPE = 'Zajecia indywidualne' order by time";
                 $result_pon = mysqli_query($conn_pon, $query_pon);?>
@@ -226,9 +226,9 @@ $login = $_SESSION['login'];
                          while($row = mysqli_fetch_array($result_pon))
                          {
                               echo '
-                              <input type="submit" class="btn btn-primary" name="submitindyvidual" value='.$row["TIME"].' /><br>
-                              
-                       
+                             <input type="hidden" id="day" name="trainer" value='.$row["TRAINER"].' readonly><br>
+                              <input type="submit" class="btn btn-primary" name="submitindyvidual" value='.$row["TIME"].' title="Trener: '.$row["TRAINER"].' &#013; Poziom: '.$row["LEVEL"].'"/><br>
+                               <input type="hidden" id="day" name="level" value='.$row["LEVEL"].' readonly><br>
                           ';                             
                          }mysqli_close($conn_pon);
                          ?>    
@@ -245,8 +245,9 @@ $login = $_SESSION['login'];
                          while($row = mysqli_fetch_array($result_pon))
                          {
                               echo '
-                              <input type="submit" class="btn btn-primary" name="submitindyvidual" value='.$row["TIME"].' /><br>
-                              
+                             <input type="hidden" id="day" name="trainer" value='.$row["TRAINER"].' readonly><br>
+                              <input type="submit" class="btn btn-primary" name="submitindyvidual" value='.$row["TIME"].' title="Trener: '.$row["TRAINER"].' &#013; Poziom: '.$row["LEVEL"].'"/><br>
+                               <input type="hidden" id="day" name="level" value='.$row["LEVEL"].' readonly><br>
                        
                           ';                             
                          }mysqli_close($conn_pon);
@@ -256,7 +257,7 @@ $login = $_SESSION['login'];
     </div>
     <div class="col-sm" id="calendar_day">
                 <form method="post" action="">
-                  <input type="text" id="day" name="day" value="Sroda" readonly><br>
+                  <input type="text" id="day" name="day" value="Środa" readonly><br>
                 <?php $conn_pon = mysqli_connect('www.jtarkowski.pl','33472118_inz','Baza$danych','33472118_inz');
                 $query_pon = "SELECT * FROM activities WHERE login = 'ADMIN' AND DAY = 'Sroda' AND TYPE = 'Zajecia indywidualne' order by time";
                 $result_pon = mysqli_query($conn_pon, $query_pon);?>
@@ -264,9 +265,9 @@ $login = $_SESSION['login'];
                          while($row = mysqli_fetch_array($result_pon))
                          {
                               echo '
-                              <input type="submit" class="btn btn-primary" name="submitindyvidual" value='.$row["TIME"].' /><br>
-                              
-                       
+                              <input type="hidden" id="day" name="trainer" value='.$row["TRAINER"].' readonly><br>
+                              <input type="submit" class="btn btn-primary" name="submitindyvidual" value='.$row["TIME"].' title="Trener: '.$row["TRAINER"].' &#013; Poziom: '.$row["LEVEL"].'"/><br>
+                               <input type="hidden" id="day" name="level" value='.$row["LEVEL"].' readonly><br>
                           ';                             
                          }mysqli_close($conn_pon);
                          ?>    
@@ -283,8 +284,9 @@ $login = $_SESSION['login'];
                          while($row = mysqli_fetch_array($result_pon))
                          {
                               echo '
-                              <input type="submit" class="btn btn-primary" name="submitindyvidual" value='.$row["TIME"].' /><br>
-                              
+                              <input type="hidden" id="day" name="trainer" value='.$row["TRAINER"].' readonly><br>
+                              <input type="submit" class="btn btn-primary" name="submitindyvidual" value='.$row["TIME"].' title="Trener: '.$row["TRAINER"].' &#013; Poziom: '.$row["LEVEL"].'"/><br>
+                               <input type="hidden" id="day" name="level" value='.$row["LEVEL"].' readonly><br>
                        
                           ';                             
                          }mysqli_close($conn_pon);
@@ -294,7 +296,7 @@ $login = $_SESSION['login'];
     </div>
         <div class="col-sm" id="calendar_day">
                 <form method="post" action="">
-                  <input type="text" id="day" name="day" value="Piatek" readonly><br>
+                  <input type="text" id="day" name="day" value="Piątek" readonly><br>
                 <?php $conn_pon = mysqli_connect('www.jtarkowski.pl','33472118_inz','Baza$danych','33472118_inz');
                 $query_pon = "SELECT * FROM activities WHERE login = 'ADMIN' AND DAY = 'Piatek' AND TYPE = 'Zajecia indywidualne' order by time";
                 $result_pon = mysqli_query($conn_pon, $query_pon);?>
@@ -302,8 +304,9 @@ $login = $_SESSION['login'];
                          while($row = mysqli_fetch_array($result_pon))
                          {
                               echo '
-                              <input type="submit" class="btn btn-primary" name="submitindyvidual" value='.$row["TIME"].' /><br>
-                              
+                            <input type="hidden" id="day" name="trainer" value='.$row["TRAINER"].' readonly><br>
+                              <input type="submit" class="btn btn-primary" name="submitindyvidual" value='.$row["TIME"].' title="Trener: '.$row["TRAINER"].' &#013; Poziom: '.$row["LEVEL"].'"/><br>
+                               <input type="hidden" id="day" name="level" value='.$row["LEVEL"].' readonly><br>
                        
                           ';                             
                          }mysqli_close($conn_pon);
@@ -315,51 +318,84 @@ $login = $_SESSION['login'];
        
     </div> 
             
-            
+       
 <!-- DODAWANIE   -->
             <?php if($access=='ADMIN'){?>
 
                 
             <div class="row" id="text">
                 
-            <div class="col-sm" id="activities_1">
+            <div class="col-sm" id="activities_add">
+                <p>Edytor zajęć</p>
                  <form method="post" action="">
                         <div class="form-row">
                             <div class="form-group col-md">
-                            <label>Rodzaj zajęć</label>
+
                                 <select class="form-control" name="type_add" type="text" style="height:40px;">
-                                    <option>Wybierz rodzaj</option>
+                                    <option>Rodzaj</option>
                                     <option value="Zajecia indywidualne">Zajęcia indywidualne</option>
                                     <option value="Zajecia grupowe">Zajęcia grupowe</option>
                                 </select>
                             </div>
                             <div class="form-group col-md">
-                            <label>Dzień</label>
+
                                 <select class="form-control" name="day_add" type="text"  style="height:40px;">
-                                    <option>Wybierz dzień</option>
-                                    <option value="Poniedzialek">Poniedziałek</option>
+                                    <option>Dzień</option>
+                                    <option value="Poniedziałek">Poniedziałek</option>
                                     <option value="Wtorek">Wtorek</option>
-                                    <option value="Sroda">Środa</option>
+                                    <option value="Środa">Środa</option>
                                     <option value="Czwartek">Czwartek</option>
-                                    <option value="Piatek">Piątek</option>
+                                    <option value="Piątek">Piątek</option>
                                 </select>
                             </div>
                             <div class="form-group col-md">
-                            <label>Godzina</label>
-                                <input class="form-control" type="text" placeholder="HH:MM" name="time_add">
+                                <input class="form-control" type="text" placeholder="HH:MM" name="time_add" style="height:40px;">
                             </div>
-                        
-    
+                            <div class="form-group col-md">
+                                <?php $conn_tr = mysqli_connect('www.jtarkowski.pl','33472118_inz','Baza$danych','33472118_inz');
+                $query_tr = "SELECT * FROM activities WHERE login = 'TRAINER'";
+                $result_tr = mysqli_query($conn_tr, $query_tr);?>
+                                <select class="form-control" name="trener_add" type="text"  style="height:40px;">
+                                <option value="nie_wybrano">Trener</option>
+                            
+                               <?php
+                         while($row = mysqli_fetch_array($result_tr))
+                         {
+                              echo '
+                                    <option value='.$row["TRAINER"].'>'.$row["TRAINER"].'</option>
+                              
+                       
+                          ';                             
+                         }mysqli_close($conn_tr);
+                         ?>    </select>
+                            </div>
+                            <div class="form-group col-md">
 
-
-
+                                <select class="form-control" name="poziom_add" type="text"  style="height:40px;">
+                                    <option value="nie_wybrano">Poziom</option>
+                                    <option value="Początkujący">Początkujący</option>
+                                    <option value="Średnio_zaawansowany">Średnio_zaawansowany</option>
+                                    <option value="Zaawansowany">Zaawansowany</option>
+                                </select>
+                            </div>
                        </div>
-
-
-                        <button type="submit" name="submit_add_activities" class="btn btn-primary">Dodaj zajęcia</button>
+                        <button type="submit" id="add" name="submit_add_activities" class="btn btn-primary">Dodaj zajęcia</button>
+                      <button type="submit" id="del" name="submit_delete_activities" class="btn btn-primary">Usuń</button>
                     </form>
-                </div>
-            </div>
+                
+                           
+                               <p> Dodaj trenera</p>
+                 <form method="post" action="">
+                        <div class="form-row">
+                            <div class="form-group col-md">
+                                <input class="form-control" type="text" placeholder="Imię_nazwisko" name="trainer_add">
+                            </div>
+                       </div>
+                        <button type="submit" id="add" name="submit_add_trainer" class="btn btn-primary">Dodaj trenera</button>
+                     <button type="submit" id="del" name="submit_delete_trainer" class="btn btn-primary">Usuń</button>
+                    </form>
+                
+            </div></div>
   
             <?php } ?>
             <div class="row" id="text">

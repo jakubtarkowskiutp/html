@@ -136,7 +136,7 @@ if(isset($_POST['submit_payments'])){
                     echo("<script>location.href = 'account_payments.php';</script>");
                 } else {
                      echo "<script type='text/javascript'>alert(\"Błąd zapisu\");</script>";
-                     echo("<script>location.href = 'index.php';</script>");
+                     echo("<script>location.href = 'account_main.php';</script>");
                 }
                 mysqli_close($conn);
         
@@ -159,6 +159,8 @@ if(isset($_POST['submit_add_activities'])){
         $day_add=$_POST['day_add'];
         $time_add=$_POST['time_add'];
         $date_in = date('Y/m/d H:i:s');
+        $trener= $_POST['trener_add'];
+        $poziom_add= $_POST['poziom_add'];
         $status="Harmonogram";
         
         
@@ -171,14 +173,126 @@ if(isset($_POST['submit_add_activities'])){
 
                 $db = mysqli_select_db($conn, "33472118_inz");
 
-                $sql = "INSERT INTO activities (LOGIN,DAY,TIME,TYPE,DATE_IN,STATUS) VALUES ('$login', '$day_add','$time_add','$type_add','$date_in','$status')";
+                $sql = "INSERT INTO activities (LOGIN,DAY,TIME,TYPE,TRAINER,LEVEL,DATE_IN,STATUS) VALUES ('$login', '$day_add','$time_add','$type_add','$trener','$poziom_add','$date_in','$status')";
 
                 if ($conn->query($sql) === TRUE) {
-                    echo "<script type='text/javascript'>alert(\"Dodano zajęcia '$type_add' w '$day_add' o '$time_add'\");</script>";
+                    echo "<script type='text/javascript'>alert(\"Dodano:'$type_add' w '$day_add' o '$time_add' Trener: '$trener' Poziom: '$poziom_add'\");</script>";
                     echo("<script>location.href = 'account_activities.php';</script>");
                 } else {
                      echo "<script type='text/javascript'>alert(\"Błąd zapisu\");</script>";
-                     echo("<script>location.href = 'index.php';</script>");
+                     echo("<script>location.href = 'account_main.php';</script>");
+                }
+                mysqli_close($conn);
+        
+   
+        
+        }
+        
+        
+    
+}
+if(isset($_POST['submit_delete_activities'])){
+    if(empty($_POST['type_add']) || empty($_POST['day_add']) || empty($_POST['time_add'])){
+         echo "<script type='text/javascript'>alert(\"Wypełnij pola: Rodzaj,dzień,godzina\");</script>";
+    } else {
+        $login="ADMIN";
+        $type_add=$_POST['type_add'];
+        $day_add=$_POST['day_add'];
+        $time_add=$_POST['time_add'];
+
+
+        
+        
+        
+        
+                $conn = mysqli_connect('www.jtarkowski.pl','33472118_inz','Baza$danych','33472118_inz');
+                if($conn === false){
+                    die("ERROR: Could not connect. " . mysqli_connect_error());
+                }
+
+                $db = mysqli_select_db($conn, "33472118_inz");
+
+                $sql = "DELETE FROM activities WHERE TYPE='$type_add' AND DAY='$day_add' AND TIME='$time_add'";
+
+                if ($conn->query($sql) === TRUE) {
+                    echo "<script type='text/javascript'>alert(\"Usunięto zajęcia '$type_add' w '$day_add' o '$time_add'\");</script>";
+                    echo("<script>location.href = 'account_activities.php';</script>");
+                } else {
+                     echo "<script type='text/javascript'>alert(\"Błąd zapisu\");</script>";
+                     echo("<script>location.href = 'account_main.php';</script>");
+                }
+                mysqli_close($conn);
+        
+   
+        
+        }
+        
+        
+    
+}
+if(isset($_POST['submit_add_trainer'])){
+    if(empty($_POST['trainer_add'])){
+         echo "<script type='text/javascript'>alert(\"Wypełnij wszystkie pola\");</script>";
+    } else {
+        $login="TRAINER";
+        $trainer_add=$_POST['trainer_add'];
+
+        $status="Lista pracowników";
+        
+        
+        
+        
+                $conn = mysqli_connect('www.jtarkowski.pl','33472118_inz','Baza$danych','33472118_inz');
+                if($conn === false){
+                    die("ERROR: Could not connect. " . mysqli_connect_error());
+                }
+
+                $db = mysqli_select_db($conn, "33472118_inz");
+
+                $sql = "INSERT INTO activities (LOGIN,TRAINER,STATUS) VALUES ('$login', '$trainer_add','$status')";
+
+                if ($conn->query($sql) === TRUE) {
+                    echo "<script type='text/javascript'>alert(\"Dodano Trenera '$trainer_add'\");</script>";
+                    echo("<script>location.href = 'account_activities.php';</script>");
+                } else {
+                     echo "<script type='text/javascript'>alert(\"Błąd zapisu\");</script>";
+                     echo("<script>location.href = 'account_main.php';</script>");
+                }
+                mysqli_close($conn);
+        
+   
+        
+        }
+        
+        
+    
+}
+if(isset($_POST['submit_delete_trainer'])){
+    if(empty($_POST['trainer_add'])){
+         echo "<script type='text/javascript'>alert(\"Wypełnij wszystkie pola\");</script>";
+    } else {
+        $login="TRAINER";
+        $trainer_add=$_POST['trainer_add'];
+
+        $status="Lista pracowników";
+        
+        
+        
+        
+                $conn = mysqli_connect('www.jtarkowski.pl','33472118_inz','Baza$danych','33472118_inz');
+                if($conn === false){
+                    die("ERROR: Could not connect. " . mysqli_connect_error());
+                }
+
+                $db = mysqli_select_db($conn, "33472118_inz");
+                $sql = "DELETE FROM activities WHERE LOGIN='$login' AND TRAINER='$trainer_add'";
+
+                if ($conn->query($sql) === TRUE) {
+                    echo "<script type='text/javascript'>alert(\"Dodano Trenera '$trainer_add'\");</script>";
+                    echo("<script>location.href = 'account_activities.php';</script>");
+                } else {
+                     echo "<script type='text/javascript'>alert(\"Błąd zapisu\");</script>";
+                     echo("<script>location.href = 'account_main.php';</script>");
                 }
                 mysqli_close($conn);
         
@@ -190,6 +304,7 @@ if(isset($_POST['submit_add_activities'])){
     
 }
 
+
 if(isset($_POST['submitgroup'])){
    
 
@@ -199,6 +314,8 @@ if(isset($_POST['submitgroup'])){
         $type="Zajecia grupowe";
         $date_in = date('Y/m/d H:i:s');
         $status = "Weryfikacja zapisu";
+        $trainer=$_POST['trainer'];
+        $level=$_POST['level'];
 
         
         
@@ -209,14 +326,14 @@ if(isset($_POST['submitgroup'])){
 
                 $db = mysqli_select_db($conn, "33472118_inz");
 
-                $sql = "INSERT INTO activities (LOGIN,DAY,TIME,TYPE,DATE_IN,STATUS) VALUES ('$login', '$day','$time','$type','$date_in','$status')";
+                $sql = "INSERT INTO activities (LOGIN,DAY,TIME,TYPE,TRAINER,LEVEL,DATE_IN,STATUS) VALUES ('$login', '$day','$time','$type','$trainer','$level','$date_in','$status')";
 
                 if ($conn->query($sql) === TRUE) {
                     echo "<script type='text/javascript'>alert(\"Dodano zajęcia '$type' w '$day' o '$time'\");</script>";
                     echo("<script>location.href = 'account_activities.php';</script>");
                 } else {
                      echo "<script type='text/javascript'>alert(\"Błąd zapisu\");</script>";
-                     echo("<script>location.href = 'index.php';</script>");
+                     echo("<script>location.href = 'account_main.php';</script>");
                 }
                 mysqli_close($conn);
         
@@ -235,7 +352,8 @@ if(isset($_POST['submitindyvidual'])){
         $type="Zajecia indywidualne";
         $date_in = date('Y/m/d H:i:s');
         $status = "Weryfikacja zapisu";
-
+        $trainer=$_POST['trainer'];
+        $level=$_POST['level'];
         
         
                 $conn = mysqli_connect('www.jtarkowski.pl','33472118_inz','Baza$danych','33472118_inz');
@@ -245,14 +363,14 @@ if(isset($_POST['submitindyvidual'])){
 
                 $db = mysqli_select_db($conn, "33472118_inz");
 
-                $sql = "INSERT INTO activities (LOGIN,DAY,TIME,TYPE,DATE_IN,STATUS) VALUES ('$login', '$day','$time','$type','$date_in','$status')";
+                $sql = "INSERT INTO activities (LOGIN,DAY,TIME,TYPE,TRAINER,LEVEL,DATE_IN,STATUS) VALUES ('$login', '$day','$time','$type','$trainer','$level','$date_in','$status')";
 
                 if ($conn->query($sql) === TRUE) {
                     echo "<script type='text/javascript'>alert(\"Dodano zajęcia '$type' w '$day' o '$time'\");</script>";
                     echo("<script>location.href = 'account_activities.php';</script>");
                 } else {
                      echo "<script type='text/javascript'>alert(\"Błąd zapisu\");</script>";
-                     echo("<script>location.href = 'index.php';</script>");
+                     echo("<script>location.href = 'account_main.php';</script>");
                 }
                 mysqli_close($conn);
         
